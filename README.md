@@ -94,6 +94,42 @@ List available route templates.
 curl http://localhost:3000/api/routes
 ```
 
+### `POST /api/chat`
+
+Send a message to Guía, the LUMIA assistant. The endpoint forwards the message to the configured n8n workflow; if no workflow is configured, it falls back to a local FAQ based on the JSON knowledge base.
+
+```bash
+curl -X POST http://localhost:3000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "¿Qué es apostilla?",
+    "sessionId": "anon-session-id",
+    "channel": "web"
+  }'
+```
+
+Response:
+
+```json
+{
+  "text": "La apostilla es una certificación...",
+  "suggestions": ["¿Qué países aceptan apostilla?", "¿Cómo inicio mi trámite?"]
+}
+```
+
+### `POST /api/telegram/webhook`
+
+Telegram bot webhook. Normalizes Telegram updates and routes them through the same assistant handler as the web chat, then replies via the Telegram Bot API.
+
+## Assistant Guía
+
+The floating chat component (`Guía`) is available on every page. It:
+
+- Opens/closes with a bottom-right button.
+- Traps focus inside the panel and closes with `Esc`.
+- Generates a session ID stored in `localStorage` so the conversation thread is stable across reloads.
+- Falls back to a local FAQ when `N8N_WEBHOOK_URL` is not set.
+
 ## Engine tests
 
 Run a lightweight engine smoke test without a test runner:
@@ -101,6 +137,37 @@ Run a lightweight engine smoke test without a test runner:
 ```bash
 pnpm test:engine
 ```
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` and fill in the values:
+
+| Variable | Required | Description |
+|---|---|---|
+| `N8N_WEBHOOK_URL` | No | Base URL of the n8n webhook. Leave empty to use the local FAQ fallback. |
+| `N8N_WEBHOOK_CHAT_PATH` | No | Optional path appended to `N8N_WEBHOOK_URL` (default: `chat`). |
+| `TELEGRAM_BOT_TOKEN` | Only for Telegram | Token from [@BotFather](https://t.me/botfather). |
+| `LUMIA_API_URL` | Only for n8n workflow | Public URL of this app so n8n can call `/api/resolve`. |
+
+## n8n setup
+
+1. Import `n8n/workflows/guia-assistant.json` into your n8n instance.
+2. Set the webhook path to match `N8N_WEBHOOK_CHAT_PATH` (default `chat`).
+3. Configure `LUMIA_API_URL` so the workflow can call `/api/resolve`.
+4. Copy the webhook URL into `N8N_WEBHOOK_URL`.
+
+## Telegram bot setup
+
+1. Create a bot with [@BotFather](https://t.me/botfather) and copy the token to `TELEGRAM_BOT_TOKEN`.
+2. Set the webhook to your public URL:
+
+```bash
+curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://<your-domain>/api/telegram/webhook"}'
+```
+
+3. The Telegram webhook consumes the same assistant handler as the web chat, so answers stay identical across channels.
 
 ## Deployment
 
