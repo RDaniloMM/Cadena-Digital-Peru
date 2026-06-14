@@ -24,6 +24,12 @@
       "name": "Embajada o Consulado del país de destino",
       "shortName": "Consulado",
       "description": "Legaliza documentos peruanos en países que no son parte del Convenio de La Haya."
+    },
+    {
+      "id": "notary",
+      "name": "Notario Público",
+      "shortName": "Notaría",
+      "description": "Certifica copias fedignas, firma documentos y otorga fe pública cuando el trámite lo requiere."
     }
   ]
 }

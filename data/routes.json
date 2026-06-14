@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "routes": [
     {
       "id": "edu-degree-hague-study",
@@ -32,7 +32,7 @@
       "optionalDocuments": ["translation"]
     },
     {
-      "id": "edu-degree-non-hague-legalization",
+      "id": "edu-degree-non-hague",
       "match": {
         "documentTypeId": "academic-degree",
         "destinationHague": false,
@@ -45,6 +45,93 @@
         { "entityId": "destination-embassy", "action": "consular-legalization", "cost": 80, "days": 7 }
       ],
       "requiredDocuments": ["original-degree", "sunedu-validation", "minedu-certification", "mre-legalization"],
+      "optionalDocuments": ["consulate-appointment"]
+    },
+    {
+      "id": "academic-transcript-hague",
+      "match": {
+        "documentTypeId": "academic-transcript",
+        "destinationHague": true,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "minedu", "action": "certify-transcript", "cost": 25, "days": 3 },
+        { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+      ],
+      "requiredDocuments": ["original-transcript", "minedu-certification"],
+      "optionalDocuments": ["translation"]
+    },
+    {
+      "id": "academic-transcript-non-hague",
+      "match": {
+        "documentTypeId": "academic-transcript",
+        "destinationHague": false,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "minedu", "action": "certify-transcript", "cost": 25, "days": 3 },
+        { "entityId": "mre", "action": "legalize", "cost": 40, "days": 4 },
+        { "entityId": "destination-embassy", "action": "consular-legalization", "cost": 80, "days": 7 }
+      ],
+      "requiredDocuments": ["original-transcript", "minedu-certification", "mre-legalization"],
+      "optionalDocuments": ["consulate-appointment"]
+    },
+    {
+      "id": "primary-secondary-certificate-hague",
+      "match": {
+        "documentTypeId": "primary-secondary-certificate",
+        "destinationHague": true,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "minedu", "action": "certify-certificate", "cost": 25, "days": 3 },
+        { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+      ],
+      "requiredDocuments": ["original-certificate", "minedu-certification"],
+      "optionalDocuments": ["translation"]
+    },
+    {
+      "id": "primary-secondary-certificate-non-hague",
+      "match": {
+        "documentTypeId": "primary-secondary-certificate",
+        "destinationHague": false,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "minedu", "action": "certify-certificate", "cost": 25, "days": 3 },
+        { "entityId": "mre", "action": "legalize", "cost": 40, "days": 4 },
+        { "entityId": "destination-embassy", "action": "consular-legalization", "cost": 80, "days": 7 }
+      ],
+      "requiredDocuments": ["original-certificate", "minedu-certification", "mre-legalization"],
+      "optionalDocuments": ["consulate-appointment"]
+    },
+    {
+      "id": "notarized-copy-hague",
+      "match": {
+        "documentTypeId": "notarized-copy",
+        "destinationHague": true,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "notary", "action": "certify-copy", "cost": 15, "days": 1 },
+        { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+      ],
+      "requiredDocuments": ["original-document", "notary-certified-copy"],
+      "optionalDocuments": ["translation"]
+    },
+    {
+      "id": "notarized-copy-non-hague",
+      "match": {
+        "documentTypeId": "notarized-copy",
+        "destinationHague": false,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "notary", "action": "certify-copy", "cost": 15, "days": 1 },
+        { "entityId": "mre", "action": "legalize", "cost": 40, "days": 4 },
+        { "entityId": "destination-embassy", "action": "consular-legalization", "cost": 80, "days": 7 }
+      ],
+      "requiredDocuments": ["original-document", "notary-certified-copy", "mre-legalization"],
       "optionalDocuments": ["consulate-appointment"]
     }
   ]
