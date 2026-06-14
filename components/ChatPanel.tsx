@@ -110,6 +110,7 @@ export function ChatPanel({
           onClick={onClose}
           aria-label="Cerrar chat"
           className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg text-lumia-white hover:bg-lumia-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
+        >
           <CloseIcon />
         </button>
       </div>
@@ -149,6 +150,7 @@ export function ChatPanel({
                     type="button"
                     onClick={() => onSuggestionClick(suggestion)}
                     className="min-h-[40px] rounded-full border border-lumia-navy/10 bg-lumia-white px-3 py-1.5 text-sm text-lumia-navy hover:bg-lumia-sky focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
+                  >
                     {suggestion}
                   </button>
                 ))}
