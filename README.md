@@ -30,12 +30,13 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Available scripts
 
 | Script | Description |
-|---|---|
+|---|---|---|
 | `pnpm dev` | Start the Next.js dev server with Turbopack |
 | `pnpm build` | Build the production application |
 | `pnpm start` | Start the production server |
 | `pnpm lint` | Run ESLint |
 | `pnpm typecheck` | Run TypeScript without emitting |
+| `pnpm test:engine` | Run engine smoke tests |
 
 ## Project structure
 
@@ -43,7 +44,11 @@ Open [http://localhost:3000](http://localhost:3000).
 app/              # Next.js App Router pages and API routes
 components/       # React components and design system
 lib/              # Types, schemas, engine, and utilities
+context/          # React context providers
+hooks/            # Custom React hooks
 data/             # JSON knowledge base (routes, entities, countries)
+n8n/              # n8n workflow templates
+scripts/          # Build-time / smoke-test scripts
 ```
 
 ## Knowledge base
@@ -138,6 +143,15 @@ Run a lightweight engine smoke test without a test runner:
 pnpm test:engine
 ```
 
+## Accessibility & mobile-first notes
+
+- WCAG 2.1 AA is the target: logical focus order, visible focus indicators, skip-to-content link, `aria-live` regions for result updates, and keyboard-operable wizard.
+- Color is never the only indicator: the preparation traffic light pairs a colored dot with text labels.
+- Touch targets are at least 40 px (most interactive targets are 44–48 px).
+- Form inputs use a minimum 16 px font size to prevent zoom on iOS.
+- Animations respect `prefers-reduced-motion`.
+- The responsive navigation collapses to an accessible hamburger menu on small viewports.
+
 ## Environment variables
 
 Copy `.env.example` to `.env.local` and fill in the values:
@@ -169,15 +183,36 @@ curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
 
 3. The Telegram webhook consumes the same assistant handler as the web chat, so answers stay identical across channels.
 
-## Deployment
+## Deployment checklist
 
-The project is configured for [Vercel](https://vercel.com/):
+1. **Environment**
+   - Node.js 22+ on the build host.
+   - pnpm 11+ (`packageManager` field pins `pnpm@11.1.3`).
+   - `pnpm install --frozen-lockfile` in CI.
 
-1. Push the repository.
-2. Import the project in Vercel.
-3. Set the environment variables from `.env.example`.
-4. Deploy.
+2. **Vercel**
+   - Import the repository in [Vercel](https://vercel.com/).
+   - `next.config.ts` sets security headers and image optimization.
+   - `vercel.json` pins the install/build commands to pnpm.
+   - Add the environment variables from `.env.example` in the Vercel dashboard.
+   - Optional: set `KV_URL` / `KV_TOKEN` if you enable server-side cross-channel chat context later.
+
+3. **Before going live**
+   - Run `pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm test:engine`, and `pnpm build` locally.
+   - Smoke-test all routes: `/`, `/wizard`, `/wizard/result`, `/verificar`, `/transparencia`, `/tramites`.
+   - Test the wizard on 320 px, 375 px, 768 px, and 1024 px viewports.
+   - Verify Guía fallback answers when `N8N_WEBHOOK_URL` is empty.
+   - Configure a real n8n webhook and run an end-to-end assistant test.
+   - Set the Telegram bot webhook only after deploying to a public HTTPS URL.
+
+## Architecture notes
+
+- **Route engine**: pure TypeScript functions in `lib/engine/` that read versioned JSON rules. No database is required for resolution.
+- **State**: anonymous and client-side. Wizard answers live in `localStorage`; the current route and checklist live in `localStorage`; saved procedures live in `localStorage`.
+- **Assistant**: shared handler in `lib/assistant/handler.ts` used by `/api/chat` and `/api/telegram/webhook`. n8n is optional; a keyword FAQ fallback covers common questions.
+- **Multi-channel parity**: web chat and Telegram normalize into the same request shape and receive equivalent answers because they share the same handler and optional n8n workflow.
+- **Security headers**: `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy` are set in `next.config.ts`.
 
 ## License
 
-MIT
+[MIT](./LICENSE)
