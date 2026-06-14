@@ -1,0 +1,8 @@
+.atl/
+node_modules/
+.next/
+out/
+.env*.local
+*.log
+tsconfig.tsbuildinfo
+

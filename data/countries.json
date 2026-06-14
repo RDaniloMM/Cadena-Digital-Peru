@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "countries": [
+    { "code": "ES", "name": "España", "hague": true },
+    { "code": "FR", "name": "Francia", "hague": true },
+    { "code": "DE", "name": "Alemania", "hague": true },
+    { "code": "US", "name": "Estados Unidos", "hague": true },
+    { "code": "CN", "name": "China", "hague": false },
+    { "code": "VE", "name": "Venezuela", "hague": false },
+    { "code": "CU", "name": "Cuba", "hague": false },
+    { "code": "AE", "name": "Emiratos Árabes Unidos", "hague": false }
+  ]
+}
