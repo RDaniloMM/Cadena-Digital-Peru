@@ -16,6 +16,7 @@ export function ProgressBar({ current, total, label }: ProgressBarProps) {
       </div>
       <div
         role="progressbar"
+        aria-label={label ?? `Paso ${clamped} de ${total}`}
         aria-valuenow={clamped}
         aria-valuemin={0}
         aria-valuemax={total}
