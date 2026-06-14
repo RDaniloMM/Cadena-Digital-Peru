@@ -24,7 +24,7 @@ export function RouteChain({ route }: RouteChainProps) {
               <span className="h-2 w-2 rounded-full bg-lumia-navy" />
             </span>
             <div className="flex flex-col gap-1">
-              <span className="text-sm font-semibold uppercase tracking-wide text-lumia-cyan">
+              <span className="text-sm font-semibold uppercase tracking-wide text-lumia-cyan-dark">
                 {entity?.shortName ?? step.entityId}
               </span>
               <h3 className="text-lg font-medium text-lumia-navy">

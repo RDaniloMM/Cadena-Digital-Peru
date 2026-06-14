@@ -38,10 +38,7 @@ export function ChecklistWidget() {
   const items = [...required, ...optional];
 
   return (
-    <div
-      className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm"
-      aria-live="polite"
-    >
+    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-semibold text-lumia-navy">
           Documentos requeridos
@@ -98,9 +95,9 @@ export function ChecklistWidget() {
         <span
           className={[
             "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-bold",
-            light === "green" && "bg-lumia-green/10 text-lumia-green",
-            light === "yellow" && "bg-lumia-yellow/10 text-lumia-yellow",
-            light === "red" && "bg-lumia-red/10 text-lumia-red",
+            light === "green" && "bg-lumia-green/10 text-lumia-green-dark",
+            light === "yellow" && "bg-lumia-yellow/10 text-lumia-yellow-dark",
+            light === "red" && "bg-lumia-red/10 text-lumia-red-dark",
           ].join(" ")}
         >
           Índice {preparationIndex}%

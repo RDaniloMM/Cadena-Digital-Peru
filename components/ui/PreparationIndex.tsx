@@ -7,13 +7,17 @@ export function PreparationIndex() {
 
   const colorClass =
     light === "green"
-      ? "text-lumia-green"
+      ? "text-lumia-green-dark"
       : light === "yellow"
-      ? "text-lumia-yellow"
-      : "text-lumia-red";
+      ? "text-lumia-yellow-dark"
+      : "text-lumia-red-dark";
 
   return (
-    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
+    <div
+      className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <h2 className="mb-2 text-xl font-semibold text-lumia-navy">
         Índice de preparación
       </h2>

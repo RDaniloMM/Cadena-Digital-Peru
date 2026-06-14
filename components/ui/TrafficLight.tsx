@@ -24,7 +24,7 @@ export function TrafficLight() {
   }[light];
 
   return (
-    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
+    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm" aria-live="polite" aria-atomic="true">
       <h2 className="mb-4 text-xl font-semibold text-lumia-navy">
         Estado de preparación
       </h2>

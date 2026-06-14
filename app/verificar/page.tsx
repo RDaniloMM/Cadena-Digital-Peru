@@ -109,11 +109,11 @@ function StatusBox({
       className={[
         "rounded-lg p-4",
         variant === "warning"
-          ? "bg-lumia-yellow/10 text-lumia-yellow"
+          ? "bg-lumia-yellow/10 text-lumia-yellow-dark"
           : "bg-lumia-sky/40 text-lumia-navy",
       ].join(" ")}
     >
-      <p className="text-sm opacity-80">{label}</p>
+      <p className="text-sm">{label}</p>
       <p className="text-2xl font-bold">{value}</p>
     </div>
   );

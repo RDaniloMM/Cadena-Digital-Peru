@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { listProcedures, removeProcedure, type SavedProcedure } from "@/lib/storage/procedures";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -34,9 +35,9 @@ export default function ProceduresPage() {
             Aún no has guardado ningún trámite.
           </p>
           <div className="mt-4">
-            <a href="/wizard">
+            <Link href="/wizard" passHref>
               <Button>Empezar un trámite</Button>
-            </a>
+            </Link>
           </div>
         </Card>
       ) : (
@@ -65,6 +66,7 @@ export default function ProceduresPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleRemove(procedure.id)}
+                  aria-label={`Eliminar trámite ${procedure.routeId}`}
                 >
                   Eliminar
                 </Button>

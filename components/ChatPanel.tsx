@@ -98,8 +98,7 @@ export function ChatPanel({
       role="dialog"
       aria-modal="true"
       aria-label="Chat con Guía"
-      className="fixed bottom-20 right-4 z-50 flex w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-lumia-navy/10 bg-lumia-white shadow-2xl sm:bottom-24 sm:right-6"
-      style={{ maxHeight: "min(80vh, 32rem)" }}
+      className="fixed inset-x-4 bottom-20 top-auto z-50 flex max-h-[min(80vh,32rem)] w-auto max-w-sm flex-col overflow-hidden rounded-2xl border border-lumia-navy/10 bg-lumia-white shadow-2xl sm:bottom-24 sm:right-6 sm:left-auto sm:w-[calc(100vw-2rem)]"
     >
       <div className="flex items-center justify-between border-b border-lumia-navy/10 bg-lumia-navy px-4 py-3">
         <div className="flex items-center gap-2">
@@ -110,8 +109,7 @@ export function ChatPanel({
           type="button"
           onClick={onClose}
           aria-label="Cerrar chat"
-          className="rounded p-1 text-lumia-white hover:bg-lumia-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
-        >
+          className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg text-lumia-white hover:bg-lumia-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
           <CloseIcon />
         </button>
       </div>
@@ -150,8 +148,7 @@ export function ChatPanel({
                     key={suggestion}
                     type="button"
                     onClick={() => onSuggestionClick(suggestion)}
-                    className="rounded-full border border-lumia-navy/10 bg-lumia-white px-3 py-1 text-xs text-lumia-navy hover:bg-lumia-sky focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
-                  >
+                    className="min-h-[40px] rounded-full border border-lumia-navy/10 bg-lumia-white px-3 py-1.5 text-sm text-lumia-navy hover:bg-lumia-sky focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
                     {suggestion}
                   </button>
                 ))}
@@ -173,13 +170,15 @@ export function ChatPanel({
         <div className="flex items-end gap-2">
           <textarea
             ref={inputRef}
+            id="chat-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Escribe tu pregunta…"
             rows={1}
-            className="max-h-32 flex-1 resize-none rounded-lg border border-lumia-navy/10 bg-lumia-white px-3 py-2 text-sm text-lumia-ink placeholder:text-lumia-muted focus:border-lumia-cyan focus:outline-none"
+            className="max-h-32 min-h-[48px] flex-1 resize-none rounded-lg border border-lumia-navy/10 bg-lumia-white px-3 py-2 text-base text-lumia-ink placeholder:text-lumia-muted focus:border-lumia-cyan focus:outline-none"
             aria-label="Mensaje para Guía"
+            aria-describedby="chat-hint"
           />
           <Button
             type="button"
@@ -191,7 +190,7 @@ export function ChatPanel({
             Enviar
           </Button>
         </div>
-        <p className="mt-2 text-xs text-lumia-muted">
+        <p id="chat-hint" className="mt-2 text-sm text-lumia-muted">
           Guía responde sobre certificación, apostilla y legalización de documentos educativos.
         </p>
       </div>
