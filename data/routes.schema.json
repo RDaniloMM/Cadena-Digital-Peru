@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://lumia.example/data/routes.schema.json",
+  "title": "LUMIA Route Knowledge Base",
+  "type": "object",
+  "required": ["version", "routes"],
+  "properties": {
+    "version": { "type": "string" },
+    "routes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/route" }
+    }
+  },
+  "definitions": {
+    "route": {
+      "type": "object",
+      "required": ["id", "match", "steps", "requiredDocuments", "optionalDocuments"],
+      "properties": {
+        "id": { "type": "string" },
+        "match": {
+          "type": "object",
+          "required": ["documentTypeId", "destinationHague", "purpose"],
+          "properties": {
+            "documentTypeId": { "type": "string" },
+            "destinationHague": { "type": "boolean" },
+            "purpose": { "type": "string" }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/step" }
+        },
+        "requiredDocuments": { "type": "array", "items": { "type": "string" } },
+        "optionalDocuments": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["entityId", "action", "cost", "days"],
+      "properties": {
+        "entityId": { "type": "string" },
+        "action": { "type": "string" },
+        "cost": { "type": "integer", "minimum": 0 },
+        "days": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

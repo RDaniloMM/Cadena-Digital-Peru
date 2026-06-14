@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "entities": [
+    {
+      "id": "sunedu",
+      "name": "Superintendencia Nacional Universitaria",
+      "shortName": "SUNEDU",
+      "description": "Valida que tu grado o título universitario esté registrado en el sistema educativo peruano."
+    },
+    {
+      "id": "minedu",
+      "name": "Ministerio de Educación",
+      "shortName": "MINEDU",
+      "description": "Certifica la autenticidad de títulos de educación superior no universitaria y gestiona apostillas de títulos."
+    },
+    {
+      "id": "mre",
+      "name": "Ministerio de Relaciones Exteriores",
+      "shortName": "MRE",
+      "description": "Otorga la apostilla o legalización de documentos peruanos para uso en el extranjero."
+    },
+    {
+      "id": "destination-embassy",
+      "name": "Embajada o Consulado del país de destino",
+      "shortName": "Consulado",
+      "description": "Legaliza documentos peruanos en países que no son parte del Convenio de La Haya."
+    }
+  ]
+}

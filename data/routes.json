@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "routes": [
+    {
+      "id": "edu-degree-hague-study",
+      "match": {
+        "documentTypeId": "academic-degree",
+        "destinationHague": true,
+        "purpose": "study"
+      },
+      "steps": [
+        { "entityId": "sunedu", "action": "validate-degree", "cost": 50, "days": 5 },
+        { "entityId": "minedu", "action": "certify-degree", "cost": 30, "days": 3 },
+        { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+      ],
+      "requiredDocuments": ["original-degree", "sunedu-validation", "minedu-certification"],
+      "optionalDocuments": ["translation", "legal-translation"]
+    },
+    {
+      "id": "edu-degree-hague-work",
+      "match": {
+        "documentTypeId": "academic-degree",
+        "destinationHague": true,
+        "purpose": "work"
+      },
+      "steps": [
+        { "entityId": "sunedu", "action": "validate-degree", "cost": 50, "days": 5 },
+        { "entityId": "minedu", "action": "certify-degree", "cost": 30, "days": 3 },
+        { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+      ],
+      "requiredDocuments": ["original-degree", "sunedu-validation", "minedu-certification", "work-offer"],
+      "optionalDocuments": ["translation"]
+    },
+    {
+      "id": "edu-degree-non-hague-legalization",
+      "match": {
+        "documentTypeId": "academic-degree",
+        "destinationHague": false,
+        "purpose": "any"
+      },
+      "steps": [
+        { "entityId": "sunedu", "action": "validate-degree", "cost": 50, "days": 5 },
+        { "entityId": "minedu", "action": "certify-degree", "cost": 30, "days": 3 },
+        { "entityId": "mre", "action": "legalize", "cost": 40, "days": 4 },
+        { "entityId": "destination-embassy", "action": "consular-legalization", "cost": 80, "days": 7 }
+      ],
+      "requiredDocuments": ["original-degree", "sunedu-validation", "minedu-certification", "mre-legalization"],
+      "optionalDocuments": ["consulate-appointment"]
+    }
+  ]
+}
