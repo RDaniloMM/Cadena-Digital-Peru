@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "apostille",
+      "patterns": ["apostilla", "apostillar", "que es apostilla", "convenio de la haya"],
+      "answer": "La apostilla es una certificación que valida el origen de un documento público para que sea reconocido en países miembros del Convenio de La Haya. En Perú, el MRE es la entidad encargada de apostillar documentos.",
+      "suggestions": ["¿Qué países aceptan apostilla?", "¿Cómo inicio mi trámite?"]
+    },
+    {
+      "id": "legalization",
+      "patterns": ["legalización", "legalizar", "legalizacion consular", "no es miembro de la haya"],
+      "answer": "Si el país destino NO es miembro del Convenio de La Haya, tu documento debe pasar por legalización: primero certificación en Perú y luego legalización consular en el consulado del país destino.",
+      "suggestions": ["¿Qué países necesitan legalización?", "¿Cómo inicio mi trámite?"]
+    },
+    {
+      "id": "requirements",
+      "patterns": ["requisitos", "que necesito", "documentos", "papeles"],
+      "answer": "Los requisitos dependen del documento y del país destino. En general necesitas el documento original, la validación/certificación correspondiente (SUNEDU/MINEDU) y, según el destino, apostilla o legalización consular. Usa el asistente web para ver la lista exacta.",
+      "suggestions": ["¿Cómo inicio mi trámite?", "¿Cuánto tiempo toma?"]
+    },
+    {
+      "id": "time",
+      "patterns": ["tiempo", "cuanto tarda", "cuanto demora", "días", "plazo"],
+      "answer": "El tiempo depende de la ruta. Cada entidad (SUNEDU, MINEDU, MRE, consulado) tiene sus propios plazos. Usa el asistente web para calcular el tiempo estimado según tu documento y país destino.",
+      "suggestions": ["¿Cuánto cuesta?", "¿Cómo inicio mi trámite?"]
+    },
+    {
+      "id": "cost",
+      "patterns": ["costo", "cuanto cuesta", "precio", "tarifa", "pago"],
+      "answer": "Los costos varían según la entidad y la ruta. LUMIA muestra un costo estimado al resolver tu trámite. Recuerda que estos valores pueden cambiar; verifica siempre en el sitio oficial de la entidad.",
+      "suggestions": ["¿Cuánto tiempo toma?", "¿Qué entidades intervienen?"]
+    },
+    {
+      "id": "start",
+      "patterns": ["inicio", "empezar", "comenzar", "hacer trámite", "hola"],
+      "answer": "Hola, soy Guía. Para comenzar, usa el asistente web: selecciona el tipo de documento, el país destino y el propósito. Te mostraré la cadena de pasos y los documentos que necesitas.",
+      "suggestions": ["¿Qué es apostilla?", "¿Qué necesito?"]
+    },
+    {
+      "id": "entities",
+      "patterns": ["entidades", "sunedu", "minedu", "mre", "consulado"],
+      "answer": "Las entidades típicas son: SUNEDU (validación de grados y maestrías), MINEDU (certificación de estudios y certificados), MRE (apostilla) y el consulado del país destino (legalización consular).",
+      "suggestions": ["¿Cómo inicio mi trámite?", "¿Qué es apostilla?"]
+    }
+  ]
+}
