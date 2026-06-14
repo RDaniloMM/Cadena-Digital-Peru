@@ -51,6 +51,58 @@ data/             # JSON knowledge base (routes, entities, countries)
 
 Certification rules live as JSON files under `data/`. Update them and redeploy to change behavior without touching application code.
 
+The engine validates `data/routes.json` against the JSON Schema at build/import time; an invalid knowledge base fails the build immediately.
+
+## Internal API
+
+### `POST /api/resolve`
+
+Resolve a certification route from citizen answers.
+
+```bash
+curl -X POST http://localhost:3000/api/resolve \
+  -H "Content-Type: application/json" \
+  -d '{
+    "documentTypeId": "academic-degree",
+    "destinationCountryCode": "ES",
+    "purpose": "study",
+    "hasOriginalDocument": true
+  }'
+```
+
+Response (Hague destination):
+
+```json
+{
+  "id": "edu-degree-hague-study",
+  "steps": [
+    { "entityId": "sunedu", "action": "validate-degree", "cost": 50, "days": 5 },
+    { "entityId": "minedu", "action": "certify-degree", "cost": 30, "days": 3 },
+    { "entityId": "mre", "action": "apostille", "cost": 20, "days": 2 }
+  ],
+  "requiredDocuments": ["original-degree", "sunedu-validation", "minedu-certification"],
+  "optionalDocuments": ["translation", "legal-translation"],
+  "totalCost": 100,
+  "totalDays": 10
+}
+```
+
+### `GET /api/routes`
+
+List available route templates.
+
+```bash
+curl http://localhost:3000/api/routes
+```
+
+## Engine tests
+
+Run a lightweight engine smoke test without a test runner:
+
+```bash
+npm run test:engine
+```
+
 ## Deployment
 
 The project is configured for [Vercel](https://vercel.com/):
