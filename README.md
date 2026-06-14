@@ -8,22 +8,21 @@ LUMIA guides Peruvian citizens through the apostille/legalization certification 
 - [Tailwind CSS v4](https://tailwindcss.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Zod](https://zod.dev/)
-- [Vercel KV](https://vercel.com/docs/storage/vercel-kv) (sessions)
 - [n8n](https://n8n.io/) (assistant workflow)
 
 ## Prerequisites
 
 - Node.js 22+ (see `.nvmrc`)
-- npm 10+
+- pnpm 11+
 
 ## Getting started
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Run the development server
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -32,11 +31,11 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Script | Description |
 |---|---|
-| `npm run dev` | Start the Next.js dev server with Turbopack |
-| `npm run build` | Build the production application |
-| `npm run start` | Start the production server |
-| `npm run lint` | Run ESLint |
-| `npm run typecheck` | Run TypeScript without emitting |
+| `pnpm dev` | Start the Next.js dev server with Turbopack |
+| `pnpm build` | Build the production application |
+| `pnpm start` | Start the production server |
+| `pnpm lint` | Run ESLint |
+| `pnpm typecheck` | Run TypeScript without emitting |
 
 ## Project structure
 
@@ -100,7 +99,7 @@ curl http://localhost:3000/api/routes
 Run a lightweight engine smoke test without a test runner:
 
 ```bash
-npm run test:engine
+pnpm test:engine
 ```
 
 ## Deployment
