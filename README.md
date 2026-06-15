@@ -188,7 +188,6 @@ curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
 1. **Environment**
    - Node.js 22+ on the build host.
    - pnpm 11+ (`packageManager` field pins `pnpm@11.1.3`).
-   - `pnpm install --frozen-lockfile` in CI.
 
 2. **Vercel**
    - Import the repository in [Vercel](https://vercel.com/).
