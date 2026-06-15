@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "LUMIA — Ruta Digital de Certificación",
   description:
     "Descubre la cadena de apostilla o legalización para tus títulos educativos antes de ir al MRE.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
