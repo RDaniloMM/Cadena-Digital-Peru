@@ -58,39 +58,29 @@ export default function ResultPage() {
   };
 
   return (
-    <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-      {/* Header con mensaje claro para el ciudadano primerizo */}
+    <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-lumia-primary sm:text-4xl">
           Tu ruta de certificación
         </h1>
         <p className="mt-3 text-base text-lumia-ink sm:text-lg">
-          Antes de ir al MRE, asegúrate de tener estos documentos.{" "}
+          Antes de ir al MRE, revisa estos dos bloques.{" "}
           <strong className="text-lumia-primary">
-            Esto es lo que revisan para no rechazarte el trámite.
+            Son lo que te piden para no rechazarte el trámite.
           </strong>
         </p>
       </div>
 
-      {/* Resumen de estado: semáforo + índice */}
-      <section
-        aria-label="Tu estado de preparación"
-        className="mb-8 grid gap-4 sm:grid-cols-2"
-      >
-        <TrafficLight />
-        <PreparationIndex />
-      </section>
-
-      {/* SECCIÓN PRIORITARIA: Documentos requeridos */}
-      <section aria-label="Documentos que necesitas" className="mb-8">
-        <DocumentsChecklist />
-      </section>
-
-      {/* Cadena de trámite */}
-      <section aria-label="Pasos del trámite" className="mb-8">
-        <Card>
+      {/* Bloque principal: dos columnas lado a lado */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Izquierda: Cadena del trámite */}
+        <Card className="h-full">
           <header className="mb-6 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lumia-primary text-lumia-white" aria-hidden="true">
+            <span
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-lumia-primary text-lumia-white"
+              aria-hidden="true"
+            >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 12h4l3-9 4 18 3-9h4" />
               </svg>
@@ -106,15 +96,26 @@ export default function ResultPage() {
           </header>
           <RouteChain route={route} />
         </Card>
+
+        {/* Derecha: Documentos requeridos */}
+        <div className="h-full">
+          <DocumentsChecklist />
+        </div>
+      </div>
+
+      {/* Bloque secundario: estado de preparación */}
+      <section className="mt-6 grid gap-4 sm:grid-cols-2" aria-label="Tu estado de preparación">
+        <TrafficLight />
+        <PreparationIndex />
       </section>
 
-      {/* Estimación de tiempo y costo */}
-      <section aria-label="Tiempo y costo estimado" className="mb-8">
+      {/* Estimación */}
+      <section className="mt-6" aria-label="Tiempo y costo estimado">
         <TimeCostSummary />
       </section>
 
       {/* Acciones */}
-      <div className="flex flex-col gap-3 sm:flex-row">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <Link href="/verificar" passHref className="w-full sm:w-auto">
           <Button variant="secondary" className="w-full sm:w-auto">
             Ir al verificador
