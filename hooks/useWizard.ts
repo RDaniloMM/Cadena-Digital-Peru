@@ -10,25 +10,6 @@ export type WizardState = {
   answers: Record<string, string | boolean>;
 };
 
-function getInitialState(): WizardState {
-  if (typeof window === "undefined") {
-    return { step: 0, answers: {} };
-  }
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored) as WizardState;
-      return {
-        step: Math.max(0, Math.min(parsed.step, wizardSteps.length - 1)),
-        answers: parsed.answers ?? {},
-      };
-    }
-  } catch {
-    // Ignore corrupted storage.
-  }
-  return { step: 0, answers: {} };
-}
-
 export function useWizard() {
   const [state, setState] = useState<WizardState>({ step: 0, answers: {} });
   const [hydrated, setHydrated] = useState(false);

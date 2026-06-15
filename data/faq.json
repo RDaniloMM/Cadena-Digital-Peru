@@ -34,7 +34,7 @@
     {
       "id": "start",
       "patterns": ["inicio", "empezar", "comenzar", "hacer trámite", "hola"],
-      "answer": "Hola, soy Guía. Para comenzar, usa el asistente web: selecciona el tipo de documento, el país destino y el propósito. Te mostraré la cadena de pasos y los documentos que necesitas.",
+      "answer": "Hola, soy Lumi. Para comenzar, usa el asistente web: selecciona el tipo de documento, el país destino y el propósito. Te mostraré la cadena de pasos y los documentos que necesitas.",
       "suggestions": ["¿Qué es apostilla?", "¿Qué necesito?"]
     },
     {

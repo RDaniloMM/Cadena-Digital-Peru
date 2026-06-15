@@ -41,9 +41,9 @@ export function computePreparationIndex(input: ReadinessInput): number {
   ).length;
 
   const requiredScore =
-    requiredTotal === 0 ? 0 : (requiredReady / requiredTotal) * 80;
+    requiredTotal === 0 ? 0 : (requiredReady / requiredTotal) * 90;
   const optionalScore =
-    optionalTotal === 0 ? 0 : (optionalReady / optionalTotal) * 20;
+    optionalTotal === 0 ? 0 : (optionalReady / optionalTotal) * 10;
 
   return Math.min(100, Math.round(requiredScore + optionalScore));
 }

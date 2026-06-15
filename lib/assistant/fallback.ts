@@ -11,6 +11,28 @@ export type FallbackFaqEntry = {
 
 const faqEntries = (faq.entries ?? []) as FallbackFaqEntry[];
 
+const outOfScopePatterns = [
+  "impuesto",
+  "sunat",
+  "renta",
+  "multa",
+  "papeleta",
+  "vehiculo",
+  "vehículo",
+  "auto",
+  "licencia de conducir",
+  "pasaporte",
+  "dni",
+  "reniec",
+  "partida de nacimiento",
+  "matrimonio",
+  "defuncion",
+  "defunción",
+  "poder",
+  "empresa",
+  "ruc",
+];
+
 function replaceControlChars(input: string): string {
   return Array.from(input)
     .map((char) => {
@@ -48,6 +70,10 @@ function scoreEntry(entry: FallbackFaqEntry, normalized: string): number {
   return score;
 }
 
+function isOutOfScope(normalized: string): boolean {
+  return outOfScopePatterns.some((pattern) => normalized.includes(pattern));
+}
+
 export function getFallbackResponse(rawMessage: string): AssistantResponse {
   const message = sanitizeInput(rawMessage);
   if (!message) {
@@ -58,6 +84,13 @@ export function getFallbackResponse(rawMessage: string): AssistantResponse {
   }
 
   const normalized = normalize(message);
+
+  if (isOutOfScope(normalized)) {
+    return {
+      text: OUT_OF_SCOPE_MESSAGE,
+      suggestions: ["¿Qué es apostilla?", "¿Cómo inicio mi trámite?"],
+    };
+  }
   const greetings = ["hola", "buenos dias", "buenas tardes", "buenas noches"];
   const isGreeting = greetings.some((g) => normalized.includes(g));
 
