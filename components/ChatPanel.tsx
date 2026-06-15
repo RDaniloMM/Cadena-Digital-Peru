@@ -99,10 +99,10 @@ export function ChatPanel({
       role="dialog"
       aria-modal="true"
       aria-label="Chat con Lumi"
-      className="fixed inset-x-4 bottom-20 top-auto z-50 flex max-h-[min(85vh,36rem)] w-auto max-w-sm flex-col overflow-hidden rounded-3xl border border-lumia-navy/10 bg-lumia-white shadow-2xl ring-1 ring-black/5 sm:bottom-24 sm:right-6 sm:left-auto sm:w-[28rem]"
+      className="fixed inset-x-4 bottom-20 top-auto z-50 flex max-h-[min(85vh,36rem)] w-auto max-w-sm flex-col overflow-hidden rounded-3xl border border-lumia-primary/10 bg-lumia-white shadow-2xl ring-1 ring-black/5 sm:bottom-24 sm:right-6 sm:left-auto sm:w-[28rem]"
     >
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-lumia-navy/10 bg-gradient-to-r from-lumia-navy to-lumia-cyan px-4 py-3">
+      <div className="flex items-center justify-between border-b border-lumia-primary/10 bg-gradient-to-r from-lumia-primary to-lumia-primary-hover px-4 py-3">
         <div className="flex items-center gap-3">
           <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-lumia-white shadow-sm">
             <Image
@@ -139,7 +139,7 @@ export function ChatPanel({
           <div className="flex gap-3">
             <AssistantAvatar />
             <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-lumia-white px-4 py-3 text-sm text-lumia-ink shadow-sm">
-              <p className="font-medium text-lumia-navy">Hola, soy Lumi</p>
+              <p className="font-medium text-lumia-primary">Hola, soy Lumi</p>
               <p className="mt-1 text-lumia-muted">
                 ¿En qué puedo ayudarte sobre certificación, apostilla o legalización?
               </p>
@@ -163,7 +163,7 @@ export function ChatPanel({
               <div
                 className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
                   message.role === "user"
-                    ? "rounded-br-sm bg-lumia-navy text-lumia-white"
+                    ? "rounded-br-sm bg-lumia-primary text-lumia-white"
                     : "rounded-tl-sm bg-lumia-white text-lumia-ink"
                 }`}
               >
@@ -176,7 +176,7 @@ export function ChatPanel({
                       key={suggestion}
                       type="button"
                       onClick={() => onSuggestionClick(suggestion)}
-                      className="min-h-[36px] rounded-full border border-lumia-cyan/30 bg-lumia-white px-4 py-1.5 text-sm font-medium text-lumia-navy shadow-sm transition-colors hover:border-lumia-cyan hover:bg-lumia-sky focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-cyan"
+                      className="min-h-[36px] rounded-full border border-lumia-primary/30 bg-lumia-white px-4 py-1.5 text-sm font-medium text-lumia-primary shadow-sm transition-colors hover:border-lumia-primary hover:bg-lumia-primary-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-lumia-primary"
                     >
                       {suggestion}
                     </button>
@@ -204,8 +204,8 @@ export function ChatPanel({
       </div>
 
       {/* Input */}
-      <div className="border-t border-lumia-navy/10 bg-lumia-white p-3">
-        <div className="flex items-end gap-2 rounded-2xl border border-lumia-navy/10 bg-lumia-surface p-2 focus-within:border-lumia-cyan focus-within:ring-2 focus-within:ring-lumia-cyan/20">
+      <div className="border-t border-lumia-primary/10 bg-lumia-white p-3">
+        <div className="flex items-end gap-2 rounded-2xl border border-lumia-primary/10 bg-lumia-surface p-2 focus-within:border-lumia-primary focus-within:ring-2 focus-within:ring-lumia-primary/20">
           <textarea
             ref={inputRef}
             id="chat-input"
@@ -239,7 +239,7 @@ export function ChatPanel({
 
 function AssistantAvatar() {
   return (
-    <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-lumia-white shadow-sm ring-1 ring-lumia-navy/10">
+    <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-lumia-white shadow-sm ring-1 ring-lumia-primary/10">
       <Image
         src="/logo.webp"
         alt=""

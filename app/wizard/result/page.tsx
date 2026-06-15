@@ -19,7 +19,7 @@ export default function ResultPage() {
     return (
       <main className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
         <Card className="text-center">
-          <h1 className="text-2xl font-bold text-lumia-navy">
+          <h1 className="text-2xl font-bold text-lumia-primary">
             Aún no hay una ruta
           </h1>
           <p className="mt-3 text-lumia-muted">
@@ -39,7 +39,7 @@ export default function ResultPage() {
     return (
       <main className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
         <Card className="text-center">
-          <h1 className="text-2xl font-bold text-lumia-navy">
+          <h1 className="text-2xl font-bold text-lumia-primary">
             No encontramos una ruta
           </h1>
           <p className="mt-3 text-lumia-muted">{route.message}</p>
@@ -59,7 +59,7 @@ export default function ResultPage() {
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-      <h1 className="mb-2 text-3xl font-bold text-lumia-navy sm:text-4xl">
+      <h1 className="mb-2 text-3xl font-bold text-lumia-primary sm:text-4xl">
         Tu ruta de certificación
       </h1>
       <p className="mb-8 text-lumia-muted">
@@ -70,7 +70,7 @@ export default function ResultPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
           <Card>
-            <h2 className="mb-6 text-xl font-semibold text-lumia-navy">
+            <h2 className="mb-6 text-xl font-semibold text-lumia-primary">
               Cadena de trámite
             </h2>
             <RouteChain route={route} />

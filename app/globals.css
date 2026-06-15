@@ -6,12 +6,13 @@
   --color-lumia-primary-hover: #1e40af;
   --color-lumia-primary-soft: #dbeafe;
   --color-lumia-secondary: #3b82f6;
-  --color-lumia-cyan: #00d4aa;
-  --color-lumia-cyan-dark: #0f766e;
+  --color-lumia-cyan: #1d4ed8;
+  --color-lumia-cyan-dark: #1e40af;
 
-  /* Legacy aliases (used in existing components) */
-  --color-lumia-navy: #0a2540;
-  --color-lumia-sky: #e6f9f5;
+  /* Legacy aliases — navy and cyan now map to primary blue for consistency */
+  --color-lumia-navy: #1d4ed8;
+  --color-lumia-navy-soft: #dbeafe;
+  --color-lumia-sky: #dbeafe;
 
   --color-lumia-surface: #f8fafc;
   --color-lumia-white: #ffffff;
@@ -24,11 +25,11 @@
   --color-lumia-warning-dark: #92400e;
   --color-lumia-error: #dc2626;
   --color-lumia-error-dark: #991b1b;
-  --color-lumia-red: #ef4444;
+  --color-lumia-red: #dc2626;
   --color-lumia-red-dark: #991b1b;
   --color-lumia-yellow: #f59e0b;
   --color-lumia-yellow-dark: #92400e;
-  --color-lumia-green: #22c55e;
+  --color-lumia-green: #16a34a;
   --color-lumia-green-dark: #166534;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

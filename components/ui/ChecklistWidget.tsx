@@ -16,7 +16,7 @@ export function ChecklistWidget() {
 
   if (!route) {
     return (
-      <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
+      <div className="rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm">
         <p className="text-lumia-muted">
           No hay una ruta activa. Completa el asistente para ver tu lista de
           documentos.
@@ -38,9 +38,9 @@ export function ChecklistWidget() {
   const items = [...required, ...optional];
 
   return (
-    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
+    <div className="rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-lumia-navy">
+        <h2 className="text-xl font-semibold text-lumia-primary">
           Documentos requeridos
         </h2>
         <Button variant="ghost" size="sm" onClick={resetDocuments}>
@@ -58,8 +58,8 @@ export function ChecklistWidget() {
                 className={[
                   "flex cursor-pointer items-start gap-3 rounded-lg border p-3 transition-colors",
                   checked
-                    ? "border-lumia-cyan bg-lumia-sky/40"
-                    : "border-lumia-navy/10 bg-lumia-surface hover:bg-lumia-sky/20",
+                    ? "border-lumia-primary bg-lumia-primary-soft/60"
+                    : "border-lumia-primary/10 bg-lumia-surface hover:bg-lumia-primary-soft/30",
                 ].join(" ")}
               >
                 <input
@@ -67,7 +67,7 @@ export function ChecklistWidget() {
                   type="checkbox"
                   checked={checked}
                   onChange={() => toggleDocument(item.id)}
-                  className="mt-0.5 h-5 w-5 accent-lumia-navy"
+                  className="mt-0.5 h-5 w-5 accent-lumia-primary"
                 />
                 <span className="flex-1 text-sm font-medium text-lumia-ink">
                   {item.label}
@@ -76,8 +76,8 @@ export function ChecklistWidget() {
                   className={[
                     "rounded-full px-2 py-0.5 text-xs font-semibold",
                     item.required
-                      ? "bg-lumia-navy/10 text-lumia-navy"
-                      : "bg-lumia-cyan/20 text-lumia-navy",
+                      ? "bg-lumia-primary/10 text-lumia-primary"
+                      : "bg-lumia-primary-soft text-lumia-primary-hover",
                   ].join(" ")}
                 >
                   {item.required ? "Requerido" : "Opcional"}
@@ -88,16 +88,16 @@ export function ChecklistWidget() {
         })}
       </ul>
 
-      <div className="flex items-center justify-between border-t border-lumia-navy/10 pt-4">
+      <div className="flex items-center justify-between border-t border-lumia-primary/10 pt-4">
         <span className="text-sm text-lumia-muted">
           {readyDocuments.length} de {items.length} listos
         </span>
         <span
           className={[
             "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-bold",
-            light === "green" && "bg-lumia-green/10 text-lumia-green-dark",
-            light === "yellow" && "bg-lumia-yellow/10 text-lumia-yellow-dark",
-            light === "red" && "bg-lumia-red/10 text-lumia-red-dark",
+            light === "green" && "bg-lumia-success/10 text-lumia-success-dark",
+            light === "yellow" && "bg-lumia-warning/10 text-lumia-warning-dark",
+            light === "red" && "bg-lumia-error/10 text-lumia-error-dark",
           ].join(" ")}
         >
           Índice {preparationIndex}%

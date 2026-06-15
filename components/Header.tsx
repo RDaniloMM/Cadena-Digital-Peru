@@ -18,7 +18,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-lumia-navy/10 bg-lumia-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-lumia-primary/10 bg-lumia-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
         <Logo />
 
@@ -31,7 +31,13 @@ export function Header() {
                   <Link
                     href={item.href}
                     aria-current={isCurrent ? "page" : undefined}
-                    className="inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-sm font-medium text-lumia-ink hover:bg-lumia-sky/50 hover:text-lumia-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan"
+                    className={[
+                      "inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                      "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-primary",
+                      isCurrent
+                        ? "bg-lumia-primary-soft text-lumia-primary"
+                        : "text-lumia-ink hover:bg-lumia-primary-soft hover:text-lumia-primary",
+                    ].join(" ")}
                   >
                     {item.label}
                   </Link>
@@ -47,7 +53,7 @@ export function Header() {
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-lumia-navy hover:bg-lumia-sky/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan md:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-lumia-primary hover:bg-lumia-primary-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-primary md:hidden"
         >
           {mobileOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
@@ -57,7 +63,7 @@ export function Header() {
         <nav
           id="mobile-menu"
           aria-label="Principal móvil"
-          className="border-t border-lumia-navy/10 bg-lumia-white md:hidden"
+          className="border-t border-lumia-primary/10 bg-lumia-white md:hidden"
         >
           <ul className="mx-auto max-w-5xl px-4 py-2">
             {navItems.map((item) => {
@@ -68,7 +74,13 @@ export function Header() {
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isCurrent ? "page" : undefined}
-                    className="flex min-h-[48px] items-center rounded-lg px-3 text-base font-medium text-lumia-ink hover:bg-lumia-sky/50 hover:text-lumia-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan"
+                    className={[
+                      "flex min-h-[48px] items-center rounded-lg px-3 text-base font-medium",
+                      "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-primary",
+                      isCurrent
+                        ? "bg-lumia-primary-soft text-lumia-primary"
+                        : "text-lumia-ink hover:bg-lumia-primary-soft hover:text-lumia-primary",
+                    ].join(" ")}
                   >
                     {item.label}
                   </Link>

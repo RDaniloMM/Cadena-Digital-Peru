@@ -11,7 +11,7 @@ export function Logo({ showText = true, size = "md" }: LogoProps) {
   return (
     <Link
       href="/"
-      className="inline-flex items-center gap-2 rounded-lg font-bold text-lumia-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan"
+      className="inline-flex items-center gap-2 rounded-lg font-bold text-lumia-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-primary"
       aria-label="LUMIA — Inicio"
     >
       <Image

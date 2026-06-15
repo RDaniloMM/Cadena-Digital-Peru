@@ -8,7 +8,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={[
-          "rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm",
+          "rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm",
           className,
         ].join(" ")}
         {...props}

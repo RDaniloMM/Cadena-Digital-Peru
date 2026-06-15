@@ -9,23 +9,23 @@ export function TrafficLight() {
     red: {
       label: "Falta mucho",
       description: "Aún te faltan documentos importantes.",
-      dot: "bg-lumia-red",
+      dot: "bg-lumia-error",
     },
     yellow: {
       label: "En progreso",
       description: "Ya tienes parte de la documentación.",
-      dot: "bg-lumia-yellow",
+      dot: "bg-lumia-warning",
     },
     green: {
       label: "Listo para iniciar",
       description: "Tienes la mayoría de los documentos.",
-      dot: "bg-lumia-green",
+      dot: "bg-lumia-success",
     },
   }[light];
 
   return (
-    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm" aria-live="polite" aria-atomic="true">
-      <h2 className="mb-4 text-xl font-semibold text-lumia-navy">
+    <div className="rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm" aria-live="polite" aria-atomic="true">
+      <h2 className="mb-4 text-xl font-semibold text-lumia-primary">
         Estado de preparación
       </h2>
       <div className="flex items-center gap-4">

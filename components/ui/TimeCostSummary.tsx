@@ -7,7 +7,7 @@ export function TimeCostSummary() {
 
   if (!route) {
     return (
-      <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
+      <div className="rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm">
         <p className="text-lumia-muted">
           Completa el asistente para ver el tiempo y costo estimado.
         </p>
@@ -16,20 +16,20 @@ export function TimeCostSummary() {
   }
 
   return (
-    <div className="rounded-xl border border-lumia-navy/10 bg-lumia-white p-6 shadow-sm">
-      <h2 className="mb-4 text-xl font-semibold text-lumia-navy">
+    <div className="rounded-xl border border-lumia-primary/10 bg-lumia-white p-6 shadow-sm">
+      <h2 className="mb-4 text-xl font-semibold text-lumia-primary">
         Estimación del trámite
       </h2>
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-lg bg-lumia-sky/40 p-4">
+        <div className="rounded-lg bg-lumia-primary-soft p-4">
           <p className="text-sm text-lumia-muted">Tiempo total estimado</p>
-          <p className="text-2xl font-bold text-lumia-navy">
+          <p className="text-2xl font-bold text-lumia-primary">
             {route.totalDays} días
           </p>
         </div>
-        <div className="rounded-lg bg-lumia-sky/40 p-4">
+        <div className="rounded-lg bg-lumia-primary-soft p-4">
           <p className="text-sm text-lumia-muted">Costo total estimado</p>
-          <p className="text-2xl font-bold text-lumia-navy">
+          <p className="text-2xl font-bold text-lumia-primary">
             S/ {route.totalCost}
           </p>
         </div>

@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-lumia-surface font-sans text-lumia-ink antialiased">
         <a
           href="#contenido"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-lumia-navy focus:px-4 focus:py-2 focus:text-lumia-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-lumia-primary focus:px-4 focus:py-2 focus:text-lumia-white"
         >
           Saltar al contenido principal
         </a>

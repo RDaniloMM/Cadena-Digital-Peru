@@ -22,7 +22,7 @@ export default function ProceduresPage() {
 
   return (
     <main className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
-      <h1 className="mb-2 text-3xl font-bold text-lumia-navy sm:text-4xl">
+      <h1 className="mb-2 text-3xl font-bold text-lumia-primary sm:text-4xl">
         Mis trámites
       </h1>
       <p className="mb-8 text-lumia-muted">
@@ -46,7 +46,7 @@ export default function ProceduresPage() {
             <li key={procedure.id}>
               <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-lg font-semibold text-lumia-navy">
+                  <p className="text-lg font-semibold text-lumia-primary">
                     {procedure.routeId}
                   </p>
                   <p className="text-sm text-lumia-muted">

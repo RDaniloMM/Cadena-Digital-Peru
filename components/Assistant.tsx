@@ -75,7 +75,7 @@ export function Assistant() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Cerrar chat con Lumi" : "Abrir chat con Lumi"}
         aria-expanded={isOpen}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-lumia-navy text-lumia-white shadow-lg transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-lumia-primary text-lumia-white shadow-lg transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-primary"
       >
         <span className="sr-only">Lumi</span>
         <ChatIcon />

@@ -27,7 +27,7 @@ export function StepCard({
   return (
     <Card className="w-full">
       <fieldset>
-        <legend className="mb-6 text-xl font-semibold text-lumia-navy sm:text-2xl">
+        <legend className="mb-6 text-xl font-semibold text-lumia-primary sm:text-2xl">
           {question}
         </legend>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -67,10 +67,10 @@ function RadioOption({
       htmlFor={id}
       className={[
         "flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors",
-        "hover:border-lumia-cyan hover:bg-lumia-sky/50",
+        "hover:border-lumia-primary hover:bg-lumia-primary-soft/50",
         checked
-          ? "border-lumia-cyan bg-lumia-sky"
-          : "border-lumia-navy/10 bg-lumia-white",
+          ? "border-lumia-primary bg-lumia-primary-soft"
+          : "border-lumia-primary/10 bg-lumia-white",
       ].join(" ")}
     >
       <input
@@ -80,7 +80,7 @@ function RadioOption({
         value={option.value}
         checked={checked}
         onChange={onChange}
-        className="h-5 w-5 accent-lumia-navy"
+        className="h-5 w-5 accent-lumia-primary"
       />
       <span className="text-base font-medium text-lumia-ink">
         {option.label}

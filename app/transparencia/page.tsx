@@ -4,13 +4,13 @@ import routes from "@/data/routes.json";
 export default function TransparencyPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
-      <h1 className="mb-6 text-3xl font-bold text-lumia-navy sm:text-4xl">
+      <h1 className="mb-6 text-3xl font-bold text-lumia-primary sm:text-4xl">
         Transparencia
       </h1>
 
       <div className="space-y-6">
         <Card>
-          <h2 className="mb-3 text-xl font-semibold text-lumia-navy">
+          <h2 className="mb-3 text-xl font-semibold text-lumia-primary">
             ¿Qué es LUMIA?
           </h2>
           <p className="text-lumia-ink">
@@ -23,7 +23,7 @@ export default function TransparencyPage() {
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-xl font-semibold text-lumia-navy">
+          <h2 className="mb-3 text-xl font-semibold text-lumia-primary">
             ¿Cómo se calcula una ruta?
           </h2>
           <ol className="list-inside list-decimal space-y-2 text-lumia-ink">
@@ -36,7 +36,7 @@ export default function TransparencyPage() {
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-xl font-semibold text-lumia-navy">
+          <h2 className="mb-3 text-xl font-semibold text-lumia-primary">
             Fuentes de datos
           </h2>
           <ul className="space-y-2 text-lumia-ink">
@@ -61,7 +61,7 @@ export default function TransparencyPage() {
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-xl font-semibold text-lumia-navy">
+          <h2 className="mb-3 text-xl font-semibold text-lumia-primary">
             Modelo de reutilización
           </h2>
           <p className="text-lumia-ink">
@@ -73,7 +73,7 @@ export default function TransparencyPage() {
         </Card>
 
         <Card>
-          <h2 className="mb-3 text-xl font-semibold text-lumia-navy">
+          <h2 className="mb-3 text-xl font-semibold text-lumia-primary">
             Alineación con Gobierno Digital
           </h2>
           <p className="text-lumia-ink">

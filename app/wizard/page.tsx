@@ -66,7 +66,7 @@ export default function WizardPage() {
   if (!hydrated) {
     return (
       <main className="mx-auto flex w-full max-w-2xl items-center justify-center px-4 py-24 sm:px-6">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-lumia-cyan border-t-transparent" aria-label="Cargando asistente" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-lumia-primary border-t-transparent" aria-label="Cargando asistente" />
       </main>
     );
   }
@@ -86,8 +86,8 @@ export default function WizardPage() {
       />
 
       {error && (
-        <Card className="mt-4 border-lumia-red/30 bg-lumia-red/5">
-          <p className="text-sm text-lumia-red" role="alert">
+        <Card className="mt-4 border-lumia-error/30 bg-lumia-error/5">
+          <p className="text-sm text-lumia-error" role="alert">
             {error}
           </p>
         </Card>
