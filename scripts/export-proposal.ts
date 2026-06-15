@@ -157,7 +157,24 @@ function main() {
     .fontSize(10)
     .font("Helvetica")
     .text("Junio 2026 · Hackathon Cadena Digital Perú", { align: "center" });
-  doc.moveDown(2);
+  doc.moveDown(1.2);
+
+  // Team
+  doc
+    .fillColor(PRIMARY)
+    .fontSize(12)
+    .font("Helvetica-Bold")
+    .text("Equipo", { align: "center" });
+  doc.moveDown(0.3);
+  doc
+    .fillColor(INK)
+    .fontSize(10)
+    .font("Helvetica")
+    .text(
+      "Andre Tomas Yucra Silvestre · Rivaldo Danilo Morón Maylle · Rosa Karen Fuertes Velasquez · Shirley Huaringa Alvan",
+      { align: "center" }
+    );
+  doc.moveDown(1.2);
 
   // Production link box
   const boxY = doc.y;

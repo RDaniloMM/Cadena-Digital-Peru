@@ -2,6 +2,13 @@
 
 LUMIA guides Peruvian citizens through the apostille/legalization certification chain for educational titles before they visit the Ministry of Foreign Affairs (MRE).
 
+## Equipo
+
+- Andre Tomas Yucra Silvestre
+- Rivaldo Danilo Morón Maylle
+- Rosa Karen Fuertes Velasquez
+- Shirley Huaringa Alvan
+
 ## Stack
 
 - [Next.js 16](https://nextjs.org/) (App Router, React 19, Turbopack)
