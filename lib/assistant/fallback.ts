@@ -81,7 +81,7 @@ export function getFallbackResponse(rawMessage: string): AssistantResponse {
 
   if (isGreeting) {
     return {
-      text: "Hola, soy Guía. Puedo ayudarte con certificación, apostilla o legalización de documentos educativos peruanos.",
+      text: "Hola, soy Lumi. Puedo ayudarte con certificación, apostilla o legalización de documentos educativos peruanos.",
       suggestions: ["¿Qué es apostilla?", "¿Cómo inicio mi trámite?"],
     };
   }

@@ -49,7 +49,7 @@ export function Assistant() {
         addMessage({
           id: crypto.randomUUID(),
           role: "assistant",
-          text: "Ups, Guía no pudo responder en este momento. Inténtalo de nuevo en unos segundos.",
+          text: "Ups, Lumi no pudo responder en este momento. Inténtalo de nuevo en unos segundos.",
           suggestions: ["¿Qué es apostilla?", "¿Cómo inicio mi trámite?"],
         });
       } finally {
@@ -73,11 +73,11 @@ export function Assistant() {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? "Cerrar chat con Guía" : "Abrir chat con Guía"}
+        aria-label={isOpen ? "Cerrar chat con Lumi" : "Abrir chat con Lumi"}
         aria-expanded={isOpen}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-lumia-navy text-lumia-white shadow-lg transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lumia-cyan"
       >
-        <span className="sr-only">Guía</span>
+        <span className="sr-only">Lumi</span>
         <ChatIcon />
       </button>
     </div>

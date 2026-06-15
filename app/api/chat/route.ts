@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     console.error("Unexpected error in /api/chat", error);
     return Response.json(
       {
-        text: "Ups, Guía no pudo responder en este momento. Por favor, inténtalo de nuevo en unos segundos.",
+        text: "Ups, Lumi no pudo responder en este momento. Por favor, inténtalo de nuevo en unos segundos.",
         suggestions: ["¿Qué es apostilla?", "¿Cómo inicio mi trámite?"],
       },
       { status: 200 }
