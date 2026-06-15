@@ -5,6 +5,5 @@ out/
 .env*.local
 *.log
 tsconfig.tsbuildinfo
-pnpm-workspace.yaml
 .pnpm-debug.log*
 .env
