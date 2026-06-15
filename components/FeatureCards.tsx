@@ -25,18 +25,23 @@ const features = [
 
 export function FeatureCards() {
   return (
-    <section className="py-14 sm:py-20">
+    <section className="bg-lumia-surface py-16 sm:py-20" aria-labelledby="why-title">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <h2 className="mb-8 text-center text-2xl font-bold text-lumia-navy sm:text-3xl">
-          ¿Por qué usar LUMIA?
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="text-center">
+          <h2 id="why-title" className="text-3xl font-bold text-lumia-ink sm:text-4xl">
+            ¿Por qué usar LUMIA?
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-lumia-muted">
+            Hecho para que tu trámite salga bien a la primera.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => (
-            <Card key={feature.title} className="h-full">
-              <h3 className="mb-2 text-lg font-semibold text-lumia-navy">
+            <Card key={feature.title} className="h-full border-lumia-primary/10">
+              <h3 className="mb-2 text-lg font-semibold text-lumia-primary">
                 {feature.title}
               </h3>
-              <p className="text-sm text-lumia-muted">{feature.description}</p>
+              <p className="text-sm leading-relaxed text-lumia-muted">{feature.description}</p>
             </Card>
           ))}
         </div>
