@@ -56,6 +56,14 @@ export type NoRouteFound = {
 
 export type ResolvedRoute = Route | NoRouteFound;
 
+export function isNoRoute(route: ResolvedRoute): route is NoRouteFound {
+  return route.id === "no-route";
+}
+
+export function isRoute(route: ResolvedRoute): route is Route {
+  return route.id !== "no-route";
+}
+
 export type ResolveInput = {
   documentTypeId: string;
   destinationCountryCode: string;

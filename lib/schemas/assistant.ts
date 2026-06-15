@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const assistantRequestSchema = z.object({
   message: z.string().min(1).max(2000),
-  sessionId: z.string().uuid(),
+  sessionId: z.string().min(1).max(128),
   channel: z.enum(["web", "telegram"]),
 });
 

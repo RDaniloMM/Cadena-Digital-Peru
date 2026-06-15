@@ -1,0 +1,178 @@
+{
+  "name": "Guía Assistant",
+  "nodes": [
+    {
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "guia-assistant",
+      "path": "guia-assistant",
+      "responseMode": "responseNode",
+      "httpMethod": "POST",
+      "options": {}
+    },
+    {
+      "id": "scope-check",
+      "name": "Scope Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 300],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "= {{ $json.message }}",
+            "type": "string"
+          },
+          "conditions": [
+            {
+              "operator": {
+                "type": "regex",
+                "operation": "regex"
+              },
+              "rightValue": "(apostilla|legalización|legalizacion|sunedu|minedu|mre|título|titulo|certificado|trámite|tramite|documento|requisito|costo|tiempo|país|pais|consulado)"
+            }
+          ],
+          "combinator": "and"
+        }
+      }
+    },
+    {
+      "id": "resolve-route",
+      "name": "Resolve Route",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [700, 220],
+      "parameters": {
+        "method": "POST",
+        "url": "= {{ $env.LUMIA_API_URL || 'http://localhost:3000' }}/api/resolve",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "documentTypeId": "= {{ $json.documentTypeId || 'academic-degree' }}",
+          "destinationCountryCode": "= {{ $json.destinationCountryCode || 'ES' }}",
+          "purpose": "= {{ $json.purpose || 'study' }}",
+          "hasOriginalDocument": "= {{ $json.hasOriginalDocument ?? true }}"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "format-answer",
+      "name": "Format Answer",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 220],
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst isRoute = input.id !== 'no-route';\nlet text = '';\nif (isRoute) {\n  text = `La ruta sugerida es *${input.id}* con ${input.steps.length} pasos, un costo estimado de S/ ${input.totalCost} y un plazo aproximado de ${input.totalDays} días laborables.`;\n} else {\n  text = input.message;\n}\nreturn [{ json: { text, suggestions: ['¿Cómo inicio mi trámite?', 'Requisitos'], routeHint: input.id } }];"
+      }
+    },
+    {
+      "id": "out-of-scope",
+      "name": "Out of Scope",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [700, 400],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "text",
+              "value": "Solo puedo ayudarte con temas de certificación, apostilla o legalización de documentos educativos peruanos. Si necesitas otra información, te sugiero contactar directamente al MRE.",
+              "type": "string"
+            },
+            {
+              "name": "suggestions",
+              "value": "[\"¿Qué es apostilla?\", \"¿Cómo inicio mi trámite?\"]",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1180, 300],
+      "parameters": {
+        "options": {},
+        "respondWith": "json",
+        "responseBody": "= {{ JSON.stringify($json) }}"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Scope Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scope Check": {
+      "main": [
+        [
+          {
+            "node": "Resolve Route",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Out of Scope",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve Route": {
+      "main": [
+        [
+          {
+            "node": "Format Answer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Answer": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Out of Scope": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": []
+}
