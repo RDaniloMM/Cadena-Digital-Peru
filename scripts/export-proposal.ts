@@ -79,6 +79,11 @@ const sections: Section[] = [
     body:
       "• Conectar con APIs oficiales (SUNEDU, MRE) para validar estado en tiempo real.\n• Agregar más tipos de documentos (no solo educativos) según demanda.\n• Soporte multi-idioma (quechua, aimara).\n• Notificaciones de seguimiento en Telegram.\n• Persistencia server-side opcional con KV/Upstash para compartir trámite entre dispositivos.\n• Auditoría de accesibilidad con Lighthouse y axe.\n• Tests E2E con Playwright.",
   },
+  {
+    title: "14. Declaración de uso de inteligencia artificial",
+    body:
+      "El bot de Telegram de LUMIA utiliza un modelo de inteligencia artificial para interpretar las preguntas del usuario y generar respuestas en lenguaje natural sobre certificación, apostilla y legalización de documentos educativos. En la configuración de referencia, este modelo es Google Gemini, integrado mediante un nodo AI Agent dentro del workflow de n8n (n8n/workflows/guia-assistant.json).\n\nEste modelo es intercambiable. La arquitectura desacoplada de LUMIA permite reemplazar el modelo de IA por cualquier otro compatible con el formato del agente (por ejemplo, OpenAI GPT-4o, Anthropic Claude, Meta Llama, Mistral, o un modelo local ejecutado con Ollama) sin modificar la lógica de la aplicación ni el handler compartido. Basta con cambiar el nodo 'AI Agent' y la credencial correspondiente en el workflow de n8n. La lógica de negocio, el motor de reglas JSON y las validaciones de scope (límite a temas de certificación) se mantienen independientes del modelo subyacente.\n\nAdicionalmente, cuando N8N_WEBHOOK_URL no está configurado, LUMIA utiliza un fallback local basado en la base de conocimiento FAQ (data/faq.json) que no depende de ningún modelo de IA externo y garantiza que el bot siempre pueda responder, incluso en escenarios offline o de demostración.",
+  },
 ];
 
 function newDoc(): PDFKit.PDFDocument {
