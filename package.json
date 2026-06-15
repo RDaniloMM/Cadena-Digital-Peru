@@ -6,9 +6,6 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
