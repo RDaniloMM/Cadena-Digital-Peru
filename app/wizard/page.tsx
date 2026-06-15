@@ -20,6 +20,7 @@ export default function WizardPage() {
     isFirstStep,
     isLastStep,
     canProceed,
+    hydrated,
     setAnswer,
     goNext,
     goBack,
@@ -61,6 +62,14 @@ export default function WizardPage() {
       setSubmitting(false);
     }
   };
+
+  if (!hydrated) {
+    return (
+      <main className="mx-auto flex w-full max-w-2xl items-center justify-center px-4 py-24 sm:px-6">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-lumia-cyan border-t-transparent" aria-label="Cargando asistente" />
+      </main>
+    );
+  }
 
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8 sm:px-6 sm:py-12">

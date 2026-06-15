@@ -30,16 +30,28 @@ function getInitialState(): WizardState {
 }
 
 export function useWizard() {
-  const [state, setState] = useState<WizardState>(getInitialState);
+  const [state, setState] = useState<WizardState>({ step: 0, answers: {} });
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored) as WizardState;
+        setState({
+          step: Math.max(0, Math.min(parsed.step, wizardSteps.length - 1)),
+          answers: parsed.answers ?? {},
+        });
+      }
+    } catch {
+      // Ignore corrupted storage.
+    }
     setHydrated(true);
-    setState(getInitialState());
   }, []);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || typeof window === "undefined") return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [state, hydrated]);
 
@@ -47,16 +59,19 @@ export function useWizard() {
   const currentStep = wizardSteps[state.step] ?? wizardSteps[0];
   const isFirstStep = state.step === 0;
   const isLastStep = state.step === totalSteps - 1;
+  const currentAnswer = state.answers[currentStep.id];
   const canProceed =
-    state.answers[currentStep.id] !== undefined &&
-    state.answers[currentStep.id] !== "";
+    currentAnswer !== undefined && currentAnswer !== "";
 
   const setAnswer = useCallback(
     (value: string | boolean) => {
-      setState((prev) => ({
-        ...prev,
-        answers: { ...prev.answers, [currentStep.id]: value },
-      }));
+      setState((prev) => {
+        const stepId = wizardSteps[prev.step]?.id ?? currentStep.id;
+        return {
+          ...prev,
+          answers: { ...prev.answers, [stepId]: value },
+        };
+      });
     },
     [currentStep.id]
   );
@@ -88,6 +103,7 @@ export function useWizard() {
     isFirstStep,
     isLastStep,
     canProceed,
+    hydrated,
     setAnswer,
     goNext,
     goBack,
